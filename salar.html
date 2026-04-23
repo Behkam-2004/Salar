@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>SALAR | شرکت فنی و مهندسی سالار</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<style>
+:root{
+  --main:#38bdf8;
+  --dark:#020617;
+  --bg:#0b1220;
+  --accent:#FFD700; /* طلایی کم */
+}
+body{
+  margin:0;
+  font-family:"Segoe UI",Tahoma;
+Background:	linear-gradient(140deg, #100E34, #4F48EC 50%, #FF0FFF 85%, #FFFF 98%);
+/*  background:var(--bg);*/
+  color:#e5e7eb;
+  line-height:1.8;
+}
+header{
+  background:linear-gradient(145deg,#020617,#0b1220);
+  padding:90px 20px;
+  text-align:center;
+  position:relative;
+}
+.logo{
+  font-size:64px;
+  font-weight:900;
+  letter-spacing:5px;
+  color:var(--main);
+}
+.logo i{margin-left:10px}
+header p{margin-top:20px;font-size:18px;color:#e5e7eb;}
+.language-btn{
+  position:absolute;
+  top:30px; right:20px;
+  background:var(--main);
+  color:#020617;
+  padding:10px 20px;
+  border-radius:25px;
+  font-weight:700;
+  cursor:pointer;
+  border:none;
+}
+
+section{padding:60px 8%;}
+h2{text-align:center;font-size:36px;color:var(--main);margin-bottom:60px;}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+.card{
+/*  background:var(--dark);*/
+	background: rgba(20,20,20,0.3);
+  border:1px solid #1e293b;
+  border-radius:26px;
+  padding:35px;
+  transition:.4s;
+  cursor:pointer;
+  text-align:center;
+}
+.card:hover{transform:translateY(-10px);border-color:var(--accent);}
+.card i{font-size:42px;color:var(--main);margin-bottom:15px;}
+
+.sub-card{
+  border:1px solid #1e293b;
+  border-radius:20px;
+  padding:25px;
+  transition:.4s;
+  text-align:center;
+}
+.sub-card:hover{transform:translateY(-5px);border-color:var(--accent);}
+.sub-card img{width:100%;height:200px;object-fit:cover;border-radius:15px;margin-bottom:10px;}
+.sub-card h4{color:var(--main);margin-bottom:5px;}
+.sub-card p{font-size:14px;}
+
+.contact-box{
+  max-width:800px;
+  margin:40px auto;
+  background:var(--dark);
+  padding:45px;
+  border-radius:30px;
+  border:1px solid #1e293b;
+  display:none; /* فرم‌ها در ابتدا مخفی */
+}
+input,textarea,select{
+  width:100%;
+  padding:15px;
+  margin-bottom:15px;
+/*  background:#0b1220;*/
+	background: rgba(20,20,20,0.3);
+  border:none;
+  border-radius:12px;
+  color:#fff;
+}
+button{
+  background:var(--main);
+  border:none;
+  padding:15px 45px;
+  border-radius:40px;
+  font-weight:700;
+  cursor:pointer;
+  color:#020617;
+}
+button.close-btn{background:#1e293b;margin-top:10px;color:#fff;}
+footer{
+  background:var(--dark);
+  padding:30px;
+  text-align:center;
+  color:#94a3b8;
+}
+
+/* کارت درباره ما */
+.about-card{
+cursor: pointer;
+  height: 10%;
+  width:80%;
+  margin:50px auto 0 auto;
+  padding:35px;
+/*  background:var(--dark);*/
+	background: rgba(20,20,20,0.3);
+  border-radius:26px;
+  border:1px solid #1e293b;
+  text-align:center;
+}
+.about-card h3{color:var(--main);}
+.about-card img{
+  width:200px;
+  height:200px;
+  border-radius:50%;
+  object-fit:cover;
+  margin:15px;
+  border:2px solid #1e293b;
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo"><i class="fa-solid fa-gear"></i>SALAR</div>
+<p id="header-text">شرکت فنی و مهندسی سالار | راهکارهای مهندسی، برق، ساختمان و فناوری</p>
+<button class="language-btn" onclick="toggleLanguage(EN)">EN</button>
+</header>
+
+<!-- صفحه اول: کارت‌ها -->
+<section id="main-cards">
+<div class="grid">
+<div class="card" onclick="openCategory('electric')"><i class="fa-solid fa-bolt"></i><h3 id="card-electric">برق</h3></div>
+<div class="card" onclick="openCategory('building')"><i class="fa-solid fa-building"></i><h3 id="card-building">ساختمان</h3></div>
+<div class="card" onclick="openCategory('computer')"><i class="fa-solid fa-computer"></i><h3 id="card-computer">کامپیوتر</h3></div>
+</div>
+
+<!-- کارت درباره ما -->
+<div class="about-card" onclick="openCategory('about')">
+<h3 id="card-about">درباره ما</h3>
+<p id="about-text">شرکت سالار، متشکل از دو مالک و تیم متخصص، ارائه‌دهنده خدمات حرفه‌ای در حوزه برق، ساختمان و فناوری است.</p>
+<!--
+<img src="images/founder3.jpg" alt="مالک ">
+<img src="images/founder2.jpg" alt="مالک ">
+<img src="images/founder1.jpg" alt="مالک ">
+-->
+</div>
+</section>
+<!-- بخش‌ها با کارت‌های داخلی -->
+<section id="electric" style="display:none;">
+<h2 id="h2-electric">برق و الکترونیک</h2>
+	
+<div class="about-card">
+<h3 id="card-about">محصولات سالار</h3>
+	</div>
+<p id="about-text">محصولات سالار را با اطمینان کامل خرید کنید</p>
+	<p id="about-text">تکنالوژی را در دستان مان احساس میکنیم</p>	
+<div class="grid">
+<div class="sub-card">
+<img src="images/ai-generated-classy-light-bulb-on-transparent-background-ai-generated-free-png.png">
+<h4 id="prod1">لامپ LED</h4>
+<p id="desc1">طراحی امن و کم‌مصرف</p>
+<button onclick="showForm('order')" id="btn-order1">ثبت سفارش</button>
+</div>
+<div class="sub-card">
+<img src="images/ai-generated-electricity-bulb-on-transparent-background-ai-generated-png.png">
+<h4 id="prod2">لامپ LED</h4>
+<p id="desc2">طول عمر بالا و مصرف پایین</p>
+<button onclick="showForm('order')" id="btn-order2">ثبت سفارش</button>
+</div>
+<div class="sub-card">
+<img src="images/vecteezy_ai-generated-classy-light-bulb-on-transparent-background_36670069.png">
+<h4 id="prod3">کلید و پریز</h4>
+<p id="desc3">طراحی مدرن و مقاوم</p>
+<button onclick="showForm('order')" id="btn-order3">ثبت سفارش</button>
+</div>
+	
+	<div class="about-card"><h3 id="about-card">سالار | نوآوری ها </h3></div>
+	
+<h3>سهیم در پیشرفت افغانستانیم و آسایش هدف ماست !! </h3>
+	<h2>تکنالوژی را در دستان مان احساس میکنیم</h2>
+	
+<div class="sub-card">
+<img src="images/S.gif">
+<h4 id="prod4">سولار تراکر</h4>
+<p id="desc4">بهینه‌سازی استفاده از انرژی خورشید</p>
+<button onclick="showForm('expert')" id="btn-expert1">درخواست کارشناس</button>
+</div>
+<div class="sub-card">
+<img src="images/down-light-housing-isolated-on-transparent-background-png.png">
+<h4 id="prod5">قفل هوشمند</h4>
+<p id="desc5">RFID، اثر انگشت، تشخیص چهره و رمز عبور</p>
+<button onclick="showForm('expert')" id="btn-expert2">درخواست کارشناس</button>
+</div>
+<button onclick="backToMain()" id="btn-back1">بازگشت</button>
+</section>
+
+<section id="building" style="display:none;">
+<h2 id="h2-building">خدمات ساختمانی</h2>
+<div class="grid">
+<div class="sub-card">
+<img src="construction.jpg">
+<h4 id="bprod1">ساخت و ساز</h4>
+<p id="bdesc1">پروژه‌های حرفه‌ای و بازسازی</p>
+<button onclick="showForm('expert')">درخواست کارشناس</button>
+</div>
+<div class="sub-card">
+<img src="interior.jpg">
+<h4 id="bprod2">بازسازی داخلی</h4>
+<p id="bdesc2">طراحی و اجرای فضای داخلی با کیفیت بالا</p>
+<button onclick="showForm('expert')">درخواست کارشناس</button>
+</div>
+</div>
+<button onclick="backToMain()">بازگشت</button>
+</section>
+
+<section id="computer" style="display:none;">
+<h2 id="h2-computer">خدمات IT و طراحی سایت</h2>
+<div class="grid">
+<div class="sub-card">
+<img src="webdesign.jpg">
+<h4 id="cprod1">طراحی سایت شرکتی</h4>
+<p id="cdesc1">سایت تک‌صفحه‌ای و چندصفحه‌ای</p>
+<button onclick="showForm('expert')">درخواست کارشناس</button>
+</div>
+<div class="sub-card">
+<img src="network.jpg">
+<h4 id="cprod2">شبکه و امنیت</h4>
+<p id="cdesc2">راه‌اندازی شبکه و پشتیبانی کامل</p>
+<button onclick="showForm('expert')">درخواست کارشناس</button>
+</div>
+</div>
+<button onclick="backToMain()">بازگشت</button>
+</section>
+
+<section id="about" style="display:none;">
+<h2 id="h2-about">تیم ما</h2>
+<div class="grid">
+<div class="sub-card">
+<img src="images/founder1.jpg">
+<h4>مالک ۱</h4>
+<p>مدیر فنی</p>
+</div>
+<div class="sub-card">
+<img src="images/founder2.jpg">
+<h4>مالک ۲</h4>
+<p>مدیر اجرایی</p>
+</div>
+<div class="sub-card">
+<img src="images/founder3.jpg">
+<h4>مالک ۲</h4>
+<p>مدیر اجرایی</p>
+</div>
+</div>
+<button onclick="backToMain()">بازگشت</button>
+</section>
+
+<!-- فرم‌ها -->
+<section id="order" class="contact-box">
+<h2>ثبت سفارش تولید</h2>
+<form action="mailto:keihanmohammad@gmail.com" method="post" enctype="text/plain">
+<input name="نام" placeholder="نام مشتری">
+<input name="شماره تماس" placeholder="شماره تماس">
+<select name="نوع سفارش">
+<option>تابلو برق</option>
+<option>برد الکترونیکی</option>
+<option>سیستم هوشمند</option>
+<option>سایر</option>
+</select>
+<textarea name="توضیحات سفارش" placeholder="توضیحات کامل سفارش"></textarea>
+<button type="submit">ارسال سفارش</button>
+<button type="button" class="close-btn" onclick="hideForm('order')">بستن فرم</button>
+</form>
+</section>
+
+<section id="expert" class="contact-box">
+<h2>درخواست کارشناس فنی</h2>
+<form action="mailto:keihanmohammad@gmail.com" method="post" enctype="text/plain">
+<input name="نام" placeholder="نام">
+<input name="شماره تماس" placeholder="شماره تماس">
+<select name="نوع خدمات">
+<option>برق صنعتی</option>
+<option>برق ساختمانی</option>
+<option>الکترونیک</option>
+<option>شبکه و IT</option>
+<option>ساختمان و بازسازی</option>
+</select>
+<textarea name="شرح مشکل" placeholder="شرح مشکل یا پروژه"></textarea>
+<button type="submit">ارسال درخواست</button>
+<button type="button" class="close-btn" onclick="hideForm('expert')">بستن فرم</button>
+</form>
+</section>
+
+<footer>
+© 2026 SALAR Engineering Company
+</footer>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({duration:900,once:true});
+function openCategory(id){
+  document.getElementById('main-cards').style.display='none';
+  document.getElementById(id).style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function backToMain(){
+  document.getElementById('main-cards').style.display='block';
+  ['electric','building','computer','about'].forEach(id=>{
+    document.getElementById(id).style.display='none';
+  });
+}
+function showForm(id){
+  document.getElementById(id).style.display='block';
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+function hideForm(id){
+  document.getElementById(id).style.display='none';
+}
+</script>
+</body>
+</html>
